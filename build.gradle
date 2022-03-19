@@ -19,6 +19,7 @@ buildscript {
         kotlin_version = '1.6.10'
         timber_version = '5.0.1'
         compose_constraint_layout_version = '1.0.0'
+        coroutine_version = '1.6.0'
 
     }
 
