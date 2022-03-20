@@ -9,6 +9,7 @@ class WatchListActionFilterImpl @Inject constructor(): WatchListActionFilter {
     override fun actionFromIntent(intent: WatchListIntent): WatchListAction {
         return when(intent) {
             is WatchListIntent.LoadCoinsListIntent -> WatchListAction.LoadCoinsListAction
+            is WatchListIntent.SearchCoinIntent -> WatchListAction.SearchCoinAction(items = intent.items, term = intent.term,)
         }
     }
 }

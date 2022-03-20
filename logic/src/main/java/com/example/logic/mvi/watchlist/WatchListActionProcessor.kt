@@ -23,6 +23,16 @@ class WatchListActionProcessor(
                 },
                 initialIntent = WatchListResult.LoadCoinsList.Loading
             )
+            is WatchListAction.SearchCoinAction -> toResult(
+                resultSuccessBlock = {
+                    val filteredItems = action.items.filter {
+                        it.name.contains(action.term, ignoreCase = true) || it.fullName.contains(action.term, ignoreCase = true)
+                    }
+                    WatchListResult.SearchCoinResult(
+                        items = filteredItems,
+                    )
+                }
+            )
         }
     }
 }

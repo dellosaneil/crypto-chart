@@ -37,4 +37,11 @@ class WatchListViewModel @Inject constructor(
     init {
         initializeFlow()
     }
+
+    fun searchCoin(term: String) {
+        emitIntent(intent = WatchListIntent.SearchCoinIntent(
+            items = getCurrentState().coinsList,
+            term = term,
+        ))
+    }
 }

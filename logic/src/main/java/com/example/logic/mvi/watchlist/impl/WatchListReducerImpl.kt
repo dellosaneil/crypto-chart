@@ -15,6 +15,9 @@ class WatchListReducerImpl @Inject constructor(): WatchListReducer {
                     is WatchListResult.LoadCoinsList.Success -> previous.copy(error = null, coinsList = result.items,)
                 }
             }
+            is WatchListResult.SearchCoinResult -> {
+                previous.copy(filteredCoins = result.items)
+            }
         }
     }
 }
