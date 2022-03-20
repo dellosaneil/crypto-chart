@@ -10,4 +10,6 @@ sealed class WatchListResult: MviResult {
         object Loading: LoadCoinsList()
         data class Error(val error: Throwable) : LoadCoinsList()
     }
+
+    data class SearchCoinResult(val items: List<CoinDetail>) : WatchListResult()
 }
