@@ -1,16 +1,14 @@
-package com.example.network.repository.impl
+package com.example.usecase.impl
 
+import com.example.item.coinlist.CoinDetail
 import com.example.network.model.schema.CoinDetailSchema
-import com.example.network.repository.NetworkRepository
-import com.example.network.service.BinanceApiService
+import com.example.usecase.MapCoinList
 import javax.inject.Inject
 
-class NetworkRepositoryImpl @Inject constructor(
-    private val service: BinanceApiService,
-): NetworkRepository {
-    override suspend fun retrieveCoinList(): List<CoinDetailSchema> {
-        return service.retrieveCoinList().data.map { coin ->
-            CoinDetailSchema(
+class MapCoinListImpl @Inject constructor() : MapCoinList {
+    override fun invoke(schema: List<CoinDetailSchema>): List<CoinDetail> {
+        return schema.map { coin ->
+            CoinDetail(
                 id = coin.id,
                 name = coin.name,
                 fullName = coin.fullName,
@@ -24,9 +22,8 @@ class NetworkRepositoryImpl @Inject constructor(
                 dayChangeAmount = coin.dayChangeAmount,
                 marketCap = coin.marketCap,
                 price = coin.price,
-                slug = coin.slug,
+                slug = coin.slug ?: "",
             )
         }
     }
-
 }
