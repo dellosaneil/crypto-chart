@@ -5,5 +5,5 @@ import javax.inject.Inject
 
 class NetworkConfigImpl @Inject constructor(): NetworkConfig {
     override val baseUrl: String
-        get() = "https://api.binance.com/"
+        get() = "https://www.binance.com/bapi/"
 }
